@@ -20,14 +20,14 @@ def main():
 			leave_sys()
 
 
-def progress_bar(bar_length, bar_icon) :	
+def progress_bar(bar_length, bar_icon):
     for i in range(bar_length + 1):
         time.sleep(0.1)
         percentaje = f'{int(i * (100 / bar_length))}%'
         progress = i * f'{bar_icon}'
         block = (bar_length - i) * '.'
         suffix = '\r'  # Overwrites current line
-        bar_animation = f'Progress: [{percentaje}] [{progress}{block}]{suffix}'
+        bar_animation = f'\033[0;30;42mProgress: [{percentaje}]\033[0;m [{progress}{block}]{suffix}'
         print(bar_animation, end='')
     print()
 
