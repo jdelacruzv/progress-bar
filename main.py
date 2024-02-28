@@ -12,7 +12,9 @@ def main():
 			bar_length = int(input('Ingrese longitud [ >= 10 ]: '))
 			bar_icon = input('Ingrese ícono [ #, $, @, =, | ]: ')
 			if bar_length >= 10 and bar_icon in icon_list:	
+				hide_cursor()
 				progress_bar(bar_length, bar_icon)
+				show_cursor()
 				leave_sys()
 			else:
 				print('Entrada no válida...')
@@ -20,6 +22,14 @@ def main():
 		except:
 			print('Entrada no válida...')
 			leave_sys()
+
+
+def hide_cursor():
+	print('\033[?25l', end='')
+
+
+def show_cursor():
+	print('\033[?25h', end='')
 
 
 def progress_bar(bar_length, bar_icon):
