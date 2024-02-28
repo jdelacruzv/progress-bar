@@ -1,0 +1,1 @@
+Program that generates a Linux Lite progress bar
