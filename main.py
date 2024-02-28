@@ -35,7 +35,7 @@ def show_cursor():
 def progress_bar(bar_length, bar_icon):
     for i in range(bar_length + 1):
         time.sleep(0.1)
-        percentaje = f'{int(i * (100 / bar_length))}%'
+        percentaje = f'{int(i * (100 / bar_length))}%'.rjust(4)
         progress = i * f'{bar_icon}'
         block = (bar_length - i) * '.'
         suffix = '\r'  # Overwrites current line
