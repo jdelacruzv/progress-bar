@@ -2,14 +2,16 @@ import time
 import os
 
 icon_list = ['#', '$', '@', '=', '|']
+INITIAL_COLOR = '\033[0;30;42m'
+FINAL_COLOR = '\033[0;m'
 
 
 def main():
 	while True:
 		try:
 			bar_length = int(input('Ingrese longitud [ >= 10 ]: '))
-			bar_icon = input('Ingrese ícono [ #, $, @, =, |, ]: ')
-			if bar_length >= 10 and bar_icon in icon_list:
+			bar_icon = input('Ingrese ícono [ #, $, @, =, | ]: ')
+			if bar_length >= 10 and bar_icon in icon_list:	
 				progress_bar(bar_length, bar_icon)
 				leave_sys()
 			else:
@@ -27,7 +29,7 @@ def progress_bar(bar_length, bar_icon):
         progress = i * f'{bar_icon}'
         block = (bar_length - i) * '.'
         suffix = '\r'  # Overwrites current line
-        bar_animation = f'\033[0;30;42mProgress: [{percentaje}]\033[0;m [{progress}{block}]{suffix}'
+        bar_animation = f'{INITIAL_COLOR}Progress: [{percentaje}]{FINAL_COLOR} [{progress}{block}]{suffix}'
         print(bar_animation, end='')
     print()
 
