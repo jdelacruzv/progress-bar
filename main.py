@@ -4,16 +4,18 @@ import os
 icon_list = ['#', '$', '@', '=', '|']
 INITIAL_COLOR = '\033[0;30;42m'
 FINAL_COLOR = '\033[0;m'
+COLUMNS = 19
 
 
 def main():
 	while True:
 		try:
-			bar_length = int(input('Ingrese longitud [ >= 10 ]: '))
+			# Get the width of the terminal
+			bar_width = int(os.get_terminal_size().columns - COLUMNS)
 			bar_icon = input('Ingrese ícono [ #, $, @, =, | ]: ')
-			if bar_length >= 10 and bar_icon in icon_list:	
+			if bar_width >= 10 and bar_icon in icon_list:	
 				hide_cursor()
-				progress_bar(bar_length, bar_icon)
+				progress_bar(bar_width, bar_icon)
 				show_cursor()
 				leave_sys()
 			else:
